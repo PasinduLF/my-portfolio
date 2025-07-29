@@ -11,19 +11,22 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Passionate Web Developer & Tech Creator
+              Aspiring Software Engineer & Web Developer
             </h3>
             <p className="text-muted-foreground">
-              With over 5 years of experience in wed development, I specialize
-              in creating responsive, accssible, and performant web applications
-              using modern technologies.
+              I’m a Software Engineering undergraduate with a passion for web
+              and mobile development. I specialize in building responsive,
+              user-friendly, and functional applications using modern
+              technologies like React, Node.js, Kotlin, and Firebase.
             </p>
             <p className="text-muted-foreground">
-              I'm passionate about creating elegant solutions to complex
-              problems, and I'm constantly learning new technologies and
-              techniques to stay at the forefront of the ever-evolving web
-              landscape.
+              I enjoy solving real-world problems through clean and efficient
+              code, and I’m always eager to learn new tools and frameworks. I’ve
+              worked on several academic and personal projects, and I’m
+              currently seeking opportunities to apply my skills in a
+              professional setting and grow as a developer.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <a href="#contact" className="cosmic-button">
                 Get In Touch
@@ -74,7 +77,7 @@ export const AboutSection = () => {
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">project Management</h4>
+                  <h4 className="font-semibold text-lg">Project Management</h4>
                   <p className="text-muted-foreground">
                     Leading projects from conception to completion with agile
                     methodologies.
