@@ -3,20 +3,20 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "Staff Management System",
+    title: "Portfolio Website",
     description:
-      "A comprehensive staff management system built with PHP and MySQL. It allows organizations to manage employee records, attendance, payroll, and performance evaluations. Features include employee onboarding, leave management, and reporting.",
-    image: "/projects/staff.jpg",
-    tags: ["HTML", "CSS", "JS"],
-    demoUrl: "#",
-    githubUrl: "#",
+      "A modern, responsive portfolio website built with React and Tailwind CSS, featuring dark mode, contact form, and smooth animations.",
+    image: "/projects/portfolio.png",
+    tags: ["React", "TailwindCSS", "EmailJS"],
+    demoUrl: "https://my-portfolio-rho-seven-75.vercel.app/",
+    githubUrl: "https://github.com/PasinduLF/my-portfolio",
   },
   {
     id: 2,
-    title: "Staff Management System",
+    title: "Personal Finance Tracker App",
     description:
-      "A comprehensive staff management system built with PHP and MySQL. It allows organizations to manage employee records, attendance, payroll, and performance evaluations. Features include employee onboarding, leave management, and reporting.",
-    image: "/projects/staff.jpg",
+      "CashBuddy is a Kotlin-based Android app that helps users track income, expenses, and budgets. It features category-wise analysis, budget alerts, and data backup for simple, effective financial management.",
+    image: "/projects/cashbuddy.png",
     tags: ["HTML", "CSS", "JS"],
     demoUrl: "#",
     githubUrl: "#",
@@ -59,6 +59,10 @@ export const ProjectsSection = () => {
                 />
               </div>
               <div className="p-6">
+                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
                     <span className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
@@ -66,11 +70,6 @@ export const ProjectsSection = () => {
                     </span>
                   ))}
                 </div>
-
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
                 <div className="flex justify-between items-center">
                   <div className="flex space-x-3">
                     <a
