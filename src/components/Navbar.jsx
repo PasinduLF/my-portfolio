@@ -3,16 +3,17 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#hero", id: "hero" },
+  { name: "About", href: "#about", id: "about" },
+  { name: "Skills", href: "#skills", id: "skills" },
+  { name: "Projects", href: "#projects", id: "projects" },
+  { name: "Contact", href: "#contact", id: "contact" },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,45 @@ export const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Intersection Observer to detect active section
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // Observe all sections
+    navItems.forEach((item) => {
+      const section = document.getElementById(item.id);
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => {
+      navItems.forEach((item) => {
+        const section = document.getElementById(item.id);
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
   }, []);
 
   return (
@@ -34,6 +74,7 @@ export const Navbar = () => {
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
+          onClick={() => setActiveSection("hero")}
         >
           <span className="relative z-10">
             <span className="text-glow text-foreground">Pasindu</span> Portfolio
@@ -46,9 +87,20 @@ export const Navbar = () => {
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              onClick={() => {
+                setActiveSection(item.id);
+              }}
+              className={cn(
+                "relative transition-colors duration-300",
+                activeSection === item.id
+                  ? "text-primary font-medium"
+                  : "text-foreground/80 hover:text-primary"
+              )}
             >
               {item.name}
+              {activeSection === item.id && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+              )}
             </a>
           ))}
         </div>
@@ -77,10 +129,21 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
+                className={cn(
+                  "relative transition-colors duration-300",
+                  activeSection === item.id
+                    ? "text-primary font-medium"
+                    : "text-foreground/80 hover:text-primary"
+                )}
+                onClick={() => {
+                  setActiveSection(item.id);
+                  setIsMenuOpen(false);
+                }}
               >
                 {item.name}
+                {activeSection === item.id && (
+                  <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
+                )}
               </a>
             ))}
           </div>
