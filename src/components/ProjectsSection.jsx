@@ -159,6 +159,7 @@ export const ProjectsSection = () => {
                   height={192}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   placeholder="bg-gradient-to-br from-primary/10 to-secondary/20"
+                  fetchPriority={key === 0 ? "high" : "auto"}
                 />
               </div>
               <div className="p-6">

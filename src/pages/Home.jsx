@@ -1,17 +1,21 @@
-import { AboutSection } from "../components/AboutSection";
-import { BlogSection } from "../components/BlogSection";
-import { CertificationsSection } from "../components/CertificationsSection";
-import { ContactSection } from "../components/ContactSection";
-import { Footer } from "../components/Footer";
+import { Suspense, lazy } from "react";
 import { HeroSection } from "../components/HeroSection";
 import { Navbar } from "../components/Navbar";
-import { ProjectsSection } from "../components/ProjectsSection";
-import { SkillsSection } from "../components/SkillsSection";
-import { TimelineSection } from "../components/TimelineSection";
 import { ScrollProgress } from "../components/ScrollProgress";
 import { SkipToContent } from "../components/SkipToContent";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
+import { SectionLoadingFallback } from "@/components/ui/loading-fallback";
+
+// Lazy load below-the-fold sections for better initial load performance
+const AboutSection = lazy(() => import("../components/AboutSection").then((module) => ({ default: module.AboutSection })));
+const TimelineSection = lazy(() => import("../components/TimelineSection").then((module) => ({ default: module.TimelineSection })));
+const SkillsSection = lazy(() => import("../components/SkillsSection").then((module) => ({ default: module.SkillsSection })));
+const CertificationsSection = lazy(() => import("../components/CertificationsSection").then((module) => ({ default: module.CertificationsSection })));
+const ProjectsSection = lazy(() => import("../components/ProjectsSection").then((module) => ({ default: module.ProjectsSection })));
+const BlogSection = lazy(() => import("../components/BlogSection").then((module) => ({ default: module.BlogSection })));
+const ContactSection = lazy(() => import("../components/ContactSection").then((module) => ({ default: module.ContactSection })));
+const Footer = lazy(() => import("../components/Footer").then((module) => ({ default: module.Footer })));
 
 export const Home = () => {
   return (
@@ -33,19 +37,43 @@ export const Home = () => {
 
       {/* Main Content */}
       <main id="main-content" tabIndex={-1}>
-        <HeroSection/>
-        <AboutSection/>
-        <TimelineSection/>
-        <SkillsSection/>
-        <CertificationsSection/>
-        <ProjectsSection/>
-        <BlogSection/>
-        <ContactSection/>
-
+        {/* Above-the-fold: Load immediately */}
+        <HeroSection />
+        
+        {/* Below-the-fold: Lazy load with Suspense */}
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <AboutSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <TimelineSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <SkillsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <CertificationsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <ProjectsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <BlogSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoadingFallback />}>
+          <ContactSection />
+        </Suspense>
       </main>
 
-      {/* Footer*/}
-      <Footer/>
+      {/* Footer - Lazy loaded */}
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

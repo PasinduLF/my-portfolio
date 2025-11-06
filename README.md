@@ -17,6 +17,8 @@ Visit the live website: [https://my-portfolio-rho-seven-75.vercel.app/](https://
 - **Skills Visualization**: Animated skill bars with categorized technologies
 - **CV Download**: Direct download link for resume
 - **Social Links**: Integration with LinkedIn, GitHub, and other social platforms
+- **Performance Optimizations**: Code splitting, lazy loading, and image optimization for fast load times
+- **Accessibility**: WCAG 2.1 compliant with keyboard navigation, ARIA labels, and screen reader support
 
 ## 🛠️ Tech Stack
 
@@ -102,6 +104,42 @@ npm run build
 ```
 
 The built files will be in the `dist` directory, ready for deployment.
+
+## ⚡ Performance Optimizations
+
+This portfolio is optimized for performance with several techniques:
+
+### Code Splitting
+- **Route-level splitting**: Routes are lazy-loaded using `React.lazy()` and `Suspense`
+- **Component-level splitting**: Below-the-fold sections are lazy-loaded to reduce initial bundle size
+- **Manual chunking**: Vendor libraries, UI components, and analytics are split into separate chunks
+
+### Lazy Loading
+- **Progressive section loading**: Sections below the fold load only when needed
+- **Intersection Observer**: Components load when they're about to enter the viewport
+- **Suspense boundaries**: Loading fallbacks provide smooth user experience during code loading
+
+### Image Optimization
+- **Lazy loading**: Images use native `loading="lazy"` attribute
+- **Responsive images**: Support for `srcset` and `sizes` attributes (when enabled)
+- **Placeholder skeletons**: Smooth loading experience with animated placeholders
+- **Fetch priority**: Critical images use `fetchPriority="high"` for faster loading
+
+### Build Optimizations
+- **Minification**: Production builds use esbuild for fast minification
+- **Tree shaking**: Unused code is automatically removed
+- **Console removal**: `console.log` statements are removed in production builds
+- **Chunk size limits**: Warnings for large chunks to maintain performance
+
+### Resource Hints
+- **DNS prefetch**: External domains (Google Analytics, fonts) are prefetched
+- **Preconnect**: Critical third-party resources are preconnected
+
+### Performance Benefits
+- **Faster initial load**: Only critical above-the-fold content loads initially
+- **Reduced bundle size**: Code splitting reduces main bundle size
+- **Better Core Web Vitals**: Optimized for LCP, FID, and CLS metrics
+- **Improved user experience**: Progressive loading with smooth transitions
 
 ## 📱 Sections Overview
 
