@@ -66,18 +66,68 @@ export const Navbar = () => {
     };
   }, []);
 
+  // Handle keyboard navigation for mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
+  // Trap focus in mobile menu when open
+  useEffect(() => {
+    if (isMenuOpen) {
+      const menu = document.querySelector('[role="dialog"]');
+      const focusableElements = menu?.querySelectorAll(
+        'a, button, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements?.[0];
+      const lastElement = focusableElements?.[focusableElements.length - 1];
+
+      const handleTabKey = (e) => {
+        if (e.key !== "Tab") return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      };
+
+      menu?.addEventListener("keydown", handleTabKey);
+      firstElement?.focus();
+
+      return () => {
+        menu?.removeEventListener("keydown", handleTabKey);
+      };
+    }
+  }, [isMenuOpen]);
+
   return (
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
         isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
       )}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="container flex items-center justify-between">
         <a
-          className="text-xl font-bold text-primary flex items-center"
+          className="text-xl font-bold text-primary flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
           href="#hero"
           onClick={() => setActiveSection("hero")}
+          aria-label="Pasindu Portfolio - Go to home"
         >
           <span className="relative z-10">
             <span className="text-glow text-foreground">Pasindu</span> Portfolio
@@ -85,40 +135,48 @@ export const Navbar = () => {
         </a>
 
         {/* desktop nav */}
-        <div className="hidden md:flex space-x-8">
+        <ul className="hidden md:flex space-x-8 list-none" role="list">
           {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              onClick={() => {
-                setActiveSection(item.id);
-              }}
-              className={cn(
-                "relative transition-colors duration-300",
-                activeSection === item.id
-                  ? "text-primary font-medium"
-                  : "text-foreground/80 hover:text-primary"
-              )}
-            >
-              {item.name}
-              {activeSection === item.id && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-              )}
-            </a>
+            <li key={key} role="listitem">
+              <a
+                href={item.href}
+                onClick={() => {
+                  setActiveSection(item.id);
+                }}
+                className={cn(
+                  "relative transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1",
+                  activeSection === item.id
+                    ? "text-primary font-medium"
+                    : "text-foreground/80 hover:text-primary"
+                )}
+                aria-current={activeSection === item.id ? "page" : undefined}
+              >
+                {item.name}
+                {activeSection === item.id && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" aria-hidden="true" />
+                )}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* mobile nav toggle button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
+          className="md:hidden p-2 text-foreground z-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
 
         {/* mobile nav menu */}
         <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
@@ -127,29 +185,31 @@ export const Navbar = () => {
               : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <ul className="flex flex-col space-y-8 text-xl list-none" role="list">
             {navItems.map((item, key) => (
-              <a
-                key={key}
-                href={item.href}
-                className={cn(
-                  "relative transition-colors duration-300",
-                  activeSection === item.id
-                    ? "text-primary font-medium"
-                    : "text-foreground/80 hover:text-primary"
-                )}
-                onClick={() => {
-                  setActiveSection(item.id);
-                  setIsMenuOpen(false);
-                }}
-              >
-                {item.name}
-                {activeSection === item.id && (
-                  <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
-                )}
-              </a>
+              <li key={key} role="listitem">
+                <a
+                  href={item.href}
+                  className={cn(
+                    "relative transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-4 py-2",
+                    activeSection === item.id
+                      ? "text-primary font-medium"
+                      : "text-foreground/80 hover:text-primary"
+                  )}
+                  onClick={() => {
+                    setActiveSection(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  aria-current={activeSection === item.id ? "page" : undefined}
+                >
+                  {item.name}
+                  {activeSection === item.id && (
+                    <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" aria-hidden="true" />
+                  )}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </nav>

@@ -29,10 +29,11 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a 
-                href="#contact" 
-                className="cosmic-button"
+              <a
+                href="#contact"
+                className="cosmic-button focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 onClick={() => trackButtonClick("get_in_touch", "about_section")}
+                aria-label="Navigate to contact section"
               >
                 Get In Touch
               </a>
@@ -41,7 +42,8 @@ export const AboutSection = () => {
                 href="/Pasindu-CV.pdf"
                 download
                 onClick={() => trackCVDownload()}
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Download Pasindu Lakshan's CV"
               >
                 Download CV
               </a>
@@ -49,9 +51,9 @@ export const AboutSection = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
+            <article className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-full bg-primary/10" aria-hidden="true">
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
@@ -62,10 +64,10 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
+            </article>
+            <article className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-full bg-primary/10" aria-hidden="true">
                   <User className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
@@ -76,10 +78,10 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
+            </article>
+            <article className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-full bg-primary/10" aria-hidden="true">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
@@ -90,7 +92,7 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>

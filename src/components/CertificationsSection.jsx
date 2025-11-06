@@ -90,25 +90,27 @@ export const CertificationsSection = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite">
             {certifications.map((cert, index) => {
               const Icon = cert.icon;
               return (
-                <div
+                <article
                   key={cert.id}
-                  className="bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden group"
+                  className="bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
                   style={{ animationDelay: `${index * 0.1}s` }}
+                  tabIndex={0}
+                  aria-label={`${cert.name} certification from ${cert.issuer}`}
                 >
                   {/* Decorative gradient */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" aria-hidden="true" />
 
                   <div className="relative z-10">
                     {/* Icon and Category */}
                     <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors" aria-hidden="true">
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
-                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground">
+                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground" aria-label={`Category: ${cert.category}`}>
                         {cert.category}
                       </span>
                     </div>
@@ -130,13 +132,13 @@ export const CertificationsSection = () => {
 
                     {/* Meta Information */}
                     <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Calendar className="w-3 h-3" />
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground" aria-label={`Issued on ${formatDate(cert.date)}`}>
+                        <Calendar className="w-3 h-3" aria-hidden="true" />
                         <span>Issued: {formatDate(cert.date)}</span>
                       </div>
                       {cert.credentialId && (
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <CheckCircle2 className="w-3 h-3" />
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground" aria-label={`Credential ID: ${cert.credentialId}`}>
+                          <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
                           <span>ID: {cert.credentialId}</span>
                         </div>
                       )}
@@ -154,17 +156,19 @@ export const CertificationsSection = () => {
                             cert.credentialUrl
                           )
                         }
-                        className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all duration-300 group/link"
+                        className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all duration-300 group/link focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1"
+                        aria-label={`Verify ${cert.name} credential`}
                       >
                         Verify Credential
                         <ExternalLink
                           size={14}
                           className="group-hover/link:translate-x-0.5 transition-transform"
+                          aria-hidden="true"
                         />
                       </a>
                     )}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

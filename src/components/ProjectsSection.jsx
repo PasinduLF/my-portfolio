@@ -80,7 +80,11 @@ export const ProjectsSection = () => {
         </p>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          role="tablist"
+          aria-label="Filter projects by technology"
+        >
           {allTags.map((tag) => (
             <button
               key={tag}
@@ -89,11 +93,14 @@ export const ProjectsSection = () => {
                 trackButtonClick(`filter_${tag}`, "projects_section");
               }}
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                 selectedTag === tag
                   ? "bg-primary text-primary-foreground shadow-lg scale-105"
                   : "bg-secondary/70 text-foreground hover:bg-secondary hover:scale-105"
               )}
+              role="tab"
+              aria-selected={selectedTag === tag}
+              aria-controls={`projects-${tag}`}
             >
               {tag}
             </button>
@@ -110,10 +117,10 @@ export const ProjectsSection = () => {
               {selectedTag}
               <button
                 onClick={() => setSelectedTag("All")}
-                className="hover:bg-primary/20 rounded-full p-0.5 transition-colors"
-                aria-label="Clear filter"
+                className="hover:bg-primary/20 rounded-full p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Clear filter and show all projects"
               >
-                <X size={14} />
+                <X size={14} aria-hidden="true" />
               </button>
             </span>
             <span className="text-sm text-muted-foreground">
@@ -123,7 +130,13 @@ export const ProjectsSection = () => {
         )}
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          role="tabpanel"
+          id={`projects-${selectedTag}`}
+          aria-live="polite"
+          aria-atomic="true"
+        >
           {isLoading ? (
             // Show skeleton loaders while loading
             Array.from({ length: 3 }).map((_, index) => (
@@ -131,10 +144,12 @@ export const ProjectsSection = () => {
             ))
           ) : filteredProjects.length > 0 ? (
             filteredProjects.map((project, key) => (
-            <div
+            <article
               key={project.id}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover animate-fade-in"
+              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover animate-fade-in focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
               style={{ animationDelay: `${key * 0.1}s` }}
+              tabIndex={0}
+              aria-label={`${project.title} project`}
             >
               <div className="h-48 overflow-hidden">
                 <OptimizedImage
@@ -167,43 +182,48 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-3" role="group" aria-label="Project links">
                     <a
                       href={project.demoUrl}
                       target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => {
                         trackProjectView(project.title, project.demoUrl);
                         trackExternalLink(`${project.title}_demo`, project.demoUrl);
                       }}
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md p-1"
+                      aria-label={`View ${project.title} demo`}
                     >
-                      <ExternalLink size={20} />
+                      <ExternalLink size={20} aria-hidden="true" />
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => {
                         trackProjectView(project.title, project.githubUrl);
                         trackExternalLink(`${project.title}_github`, project.githubUrl);
                       }}
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md p-1"
+                      aria-label={`View ${project.title} source code on GitHub`}
                     >
-                      <Github size={20} />
+                      <Github size={20} aria-hidden="true" />
                     </a>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
             ))
           ) : (
             // No projects found message
-            <div className="col-span-full text-center py-12">
+            <div className="col-span-full text-center py-12" role="alert">
               <p className="text-muted-foreground text-lg mb-4">
                 No projects found with the tag "{selectedTag}"
               </p>
               <button
                 onClick={() => setSelectedTag("All")}
-                className="cosmic-button"
+                className="cosmic-button focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Show all projects"
               >
                 Show All Projects
               </button>
@@ -214,10 +234,12 @@ export const ProjectsSection = () => {
           <a
             href="https://github.com/PasinduLF"
             target="_blank"
+            rel="noopener noreferrer"
             onClick={() => trackExternalLink("github_profile", "https://github.com/PasinduLF")}
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
+            className="cosmic-button w-fit flex items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            aria-label="Visit my GitHub profile"
           >
-            Check My GitHub <ArrowRight size={16} />
+            Check My GitHub <ArrowRight size={16} aria-hidden="true" />
           </a>
         </div>
       </div>

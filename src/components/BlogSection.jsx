@@ -95,6 +95,50 @@ export const BlogSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle keyboard navigation for modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && selectedPost) {
+        setSelectedPost(null);
+      }
+    };
+
+    if (selectedPost) {
+      window.addEventListener("keydown", handleKeyDown);
+      // Trap focus in modal
+      const modal = document.querySelector('[role="dialog"]');
+      const focusableElements = modal?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements?.[0];
+      const lastElement = focusableElements?.[focusableElements.length - 1];
+
+      const handleTabKey = (e) => {
+        if (e.key !== "Tab") return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      };
+
+      modal?.addEventListener("keydown", handleTabKey);
+      firstElement?.focus();
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+        modal?.removeEventListener("keydown", handleTabKey);
+      };
+    }
+  }, [selectedPost]);
+
   const filteredPosts = useMemo(() => {
     if (selectedCategory === "All") return blogPosts;
     return blogPosts.filter((post) => post.category === selectedCategory);
@@ -123,17 +167,24 @@ export const BlogSection = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          role="tablist"
+          aria-label="Filter blog posts by category"
+        >
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                 selectedCategory === category
                   ? "bg-primary text-primary-foreground shadow-lg scale-105"
                   : "bg-secondary/70 text-foreground hover:bg-secondary hover:scale-105"
               )}
+              role="tab"
+              aria-selected={selectedCategory === category}
+              aria-controls={`blog-${category}`}
             >
               {category}
             </button>
@@ -156,14 +207,21 @@ export const BlogSection = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            role="tabpanel"
+            id={`blog-${selectedCategory}`}
+            aria-live="polite"
+            aria-atomic="true"
+          >
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
                 className={cn(
-                  "bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden group",
+                  "bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2",
                   post.featured && "md:col-span-2"
                 )}
+                tabIndex={0}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" />
                 <div className="relative z-10">
@@ -200,12 +258,14 @@ export const BlogSection = () => {
                   {/* Read More Button - Opens Modal */}
                   <button
                     onClick={() => setSelectedPost(post)}
-                    className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all duration-300 group/link"
+                    className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all duration-300 group/link focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1"
+                    aria-label={`Read more about ${post.title}`}
                   >
                     Read More
                     <ArrowRight
                       size={16}
                       className="group-hover/link:translate-x-1 transition-transform"
+                      aria-hidden="true"
                     />
                   </button>
                 </div>
@@ -216,23 +276,34 @@ export const BlogSection = () => {
 
         {/* Popup Modal */}
         {selectedPost && (
-          <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-            <div className="bg-card max-w-2xl w-full p-6 rounded-lg shadow-xl relative animate-fade-in">
+          <div
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="blog-modal-title"
+            aria-describedby="blog-modal-content"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setSelectedPost(null);
+              }
+            }}
+          >
+            <div className="bg-card max-w-2xl w-full p-6 rounded-lg shadow-xl relative animate-fade-in focus:outline-none">
               <button
                 onClick={() => setSelectedPost(null)}
-                className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition"
-                aria-label="Close"
+                className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md p-1"
+                aria-label="Close blog post modal"
               >
-                <X size={20} />
+                <X size={20} aria-hidden="true" />
               </button>
 
-              <h3 className="text-2xl font-bold mb-3 text-primary">
+              <h3 id="blog-modal-title" className="text-2xl font-bold mb-3 text-primary">
                 {selectedPost.title}
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4" aria-label={`Published on ${formatDate(selectedPost.date)}, ${selectedPost.readTime}`}>
                 {formatDate(selectedPost.date)} • {selectedPost.readTime}
               </p>
-              <p className="text-foreground leading-relaxed mb-6">
+              <p id="blog-modal-content" className="text-foreground leading-relaxed mb-6">
                 {selectedPost.fullContent}
               </p>
 

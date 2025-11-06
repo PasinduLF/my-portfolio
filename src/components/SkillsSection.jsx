@@ -50,24 +50,37 @@ export const SkillsSection = () => {
           My <span className="text-primary">Skills</span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div
+          className="flex flex-wrap justify-center gap-4 mb-12"
+          role="tablist"
+          aria-label="Filter skills by category"
+        >
           {categories.map((category, key) => (
             <button
               key={key}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                "px-5 py-2 rounded-full transition-colors duration-300 capitalize focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary/70 text-foreground hover:bd-secondary"
               )}
+              role="tab"
+              aria-selected={activeCategory === category}
+              aria-controls={`skills-${category}`}
             >
               {category}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          role="tabpanel"
+          id={`skills-${activeCategory}`}
+          aria-live="polite"
+          aria-atomic="true"
+        >
           {isLoading ? (
             // Show skeleton loaders while loading
             Array.from({ length: 6 }).map((_, index) => (
@@ -78,18 +91,28 @@ export const SkillsSection = () => {
             <div
               key={key}
               className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              role="article"
+              aria-label={`${skill.name} skill level ${skill.level} percent`}
             >
               <div className="text-left mb-4">
                 <h3 className="font-semibold text-lg">{skill.name}</h3>
               </div>
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
+              <div
+                className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden"
+                role="progressbar"
+                aria-valuenow={skill.level}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${skill.name} proficiency: ${skill.level} percent`}
+              >
                 <div
                   className="bg-primary h-2 rounded-full orgin-left animate-[grow_1.5s_ease-out"
                   style={{ width: skill.level + "%" }}
+                  aria-hidden="true"
                 />
               </div>
               <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-muted-foreground" aria-hidden="true">
                   {skill.level}%
                 </span>
               </div>

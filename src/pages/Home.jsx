@@ -9,12 +9,16 @@ import { ProjectsSection } from "../components/ProjectsSection";
 import { SkillsSection } from "../components/SkillsSection";
 import { TimelineSection } from "../components/TimelineSection";
 import { ScrollProgress } from "../components/ScrollProgress";
+import { SkipToContent } from "../components/SkipToContent";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 
 export const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Skip to Content Link */}
+      <SkipToContent />
+
       {/* Scroll Progress Indicator */}
       <ScrollProgress />
 
@@ -28,7 +32,7 @@ export const Home = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroSection/>
         <AboutSection/>
         <TimelineSection/>

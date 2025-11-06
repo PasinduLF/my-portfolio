@@ -69,64 +69,78 @@ export const ContactSection = () => {
             <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
             <div className="space-y-6 justify-center">
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-full bg-primary/10" aria-hidden="true">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
                   <a
                     href="mailto:lpasindu30@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-1"
+                    aria-label="Send email to lpasindu30@gmail.com"
                   >
                     lpasindu30@gmail.com
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-full bg-primary/10" aria-hidden="true">
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
                   <a
                     href="tel:+94719930179"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-1"
+                    aria-label="Call +94 71 993 0179"
                   >
                     +94 (71) 993-0179
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-full bg-primary/10" aria-hidden="true">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium">Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
+                  <span className="text-muted-foreground">
                     Wattala, Sri Lanka
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
             <div className="pt-8">
               <h4 className="font=medium mb-4">Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
+              <div className="flex space-x-4 justify-center" role="list" aria-label="Social media links">
                 <a
                   href="https://www.linkedin.com/in/pasindu-lakshan-823909279/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => trackExternalLink("linkedin", "https://www.linkedin.com/in/pasindu-lakshan-823909279/")}
+                  className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md p-1"
+                  aria-label="Visit my LinkedIn profile"
                 >
-                  <Linkedin />
+                  <Linkedin aria-hidden="true" />
                 </a>
-                <a href="" target="_blank">
-                  <Twitter />
+                <a
+                  href=""
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md p-1"
+                  aria-label="Visit my Twitter profile"
+                >
+                  <Twitter aria-hidden="true" />
                 </a>
                 <a 
                   href="https://github.com/PasinduLF" 
                   target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => trackExternalLink("github", "https://github.com/PasinduLF")}
+                  className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md p-1"
+                  aria-label="Visit my GitHub profile"
                 >
-                  <Github />
+                  <Github aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -135,7 +149,7 @@ export const ContactSection = () => {
           {/* ✅ EmailJS Form */}
           <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
               <div>
                 <label
                   htmlFor="name"
@@ -148,9 +162,12 @@ export const ContactSection = () => {
                   name="name"
                   id="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  autoComplete="name"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   placeholder="Jhon..."
+                  aria-describedby="name-description"
                 />
+                <span id="name-description" className="sr-only">Enter your full name</span>
               </div>
               <div>
                 <label
@@ -164,9 +181,12 @@ export const ContactSection = () => {
                   name="email"
                   id="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  autoComplete="email"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   placeholder="jhon@gmail.com"
+                  aria-describedby="email-description"
                 />
+                <span id="email-description" className="sr-only">Enter your email address</span>
               </div>
               <div>
                 <label
@@ -179,27 +199,31 @@ export const ContactSection = () => {
                   name="message"
                   id="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 resize-none"
                   placeholder="Hello, I'd like to talk about..."
+                  aria-describedby="message-description"
                 />
+                <span id="message-description" className="sr-only">Enter your message</span>
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2",
+                  "cosmic-button w-full flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                   isSubmitting && "opacity-75 cursor-not-allowed"
                 )}
+                aria-busy={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
-                    <LoadingSpinner size={16} />
-                    Sending...
+                    <LoadingSpinner size={16} aria-hidden="true" />
+                    <span aria-live="polite">Sending...</span>
                   </>
                 ) : (
                   <>
                     Send Message
-                    <Send size={16} />
+                    <Send size={16} aria-hidden="true" />
                   </>
                 )}
               </button>
