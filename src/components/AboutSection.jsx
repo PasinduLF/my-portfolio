@@ -1,4 +1,5 @@
 import { Briefcase, Code, User } from "lucide-react";
+import { trackCVDownload, trackButtonClick } from "@/lib/analytics";
 
 export const AboutSection = () => {
   return (
@@ -28,13 +29,18 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
+              <a 
+                href="#contact" 
+                className="cosmic-button"
+                onClick={() => trackButtonClick("get_in_touch", "about_section")}
+              >
                 Get In Touch
               </a>
 
               <a
                 href="/Pasindu-CV.pdf"
                 download
+                onClick={() => trackCVDownload()}
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV

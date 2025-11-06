@@ -160,6 +160,28 @@ To enable the contact form functionality, you'll need to configure EmailJS:
    )
    ```
 
+### Google Analytics Setup
+To enable visitor tracking with Google Analytics:
+
+1. Create a Google Analytics 4 (GA4) property at [analytics.google.com](https://analytics.google.com/)
+2. Get your Measurement ID (format: `G-XXXXXXXXXX`)
+3. Create a `.env` file in the root directory:
+   ```env
+   VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+   ```
+4. Replace `G-XXXXXXXXXX` with your actual Measurement ID
+5. Restart your development server
+
+The analytics will automatically track:
+- Page views
+- Button clicks (filters, CTAs)
+- Project views (demo and GitHub links)
+- Contact form submissions
+- CV downloads
+- External link clicks (social media, GitHub)
+
+**Note:** Analytics only works in production or when the environment variable is set. It won't track in development mode without the variable.
+
 ### Customization
 - Update personal information in component files
 - Modify the color scheme in `src/index.css`

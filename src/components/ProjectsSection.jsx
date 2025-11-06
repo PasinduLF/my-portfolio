@@ -3,6 +3,7 @@ import { OptimizedImage } from "./OptimizedImage";
 import { ProjectCardSkeleton } from "./ui/skeleton";
 import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { trackProjectView, trackExternalLink, trackButtonClick } from "@/lib/analytics";
 
 const projects = [
   {
@@ -83,7 +84,10 @@ export const ProjectsSection = () => {
           {allTags.map((tag) => (
             <button
               key={tag}
-              onClick={() => setSelectedTag(tag)}
+              onClick={() => {
+                setSelectedTag(tag);
+                trackButtonClick(`filter_${tag}`, "projects_section");
+              }}
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 selectedTag === tag
@@ -167,6 +171,10 @@ export const ProjectsSection = () => {
                     <a
                       href={project.demoUrl}
                       target="_blank"
+                      onClick={() => {
+                        trackProjectView(project.title, project.demoUrl);
+                        trackExternalLink(`${project.title}_demo`, project.demoUrl);
+                      }}
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <ExternalLink size={20} />
@@ -174,6 +182,10 @@ export const ProjectsSection = () => {
                     <a
                       href={project.githubUrl}
                       target="_blank"
+                      onClick={() => {
+                        trackProjectView(project.title, project.githubUrl);
+                        trackExternalLink(`${project.title}_github`, project.githubUrl);
+                      }}
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <Github size={20} />
@@ -202,6 +214,7 @@ export const ProjectsSection = () => {
           <a
             href="https://github.com/PasinduLF"
             target="_blank"
+            onClick={() => trackExternalLink("github_profile", "https://github.com/PasinduLF")}
             className="cosmic-button w-fit flex items-center mx-auto gap-2"
           >
             Check My GitHub <ArrowRight size={16} />

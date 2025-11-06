@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import { LoadingSpinner } from "./ui/loading-spinner";
+import { trackContactForm, trackExternalLink } from "@/lib/analytics";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -33,6 +34,7 @@ export const ContactSection = () => {
       )
       .then(
         (result) => {
+          trackContactForm(true);
           toast({
             title: "Message sent!",
             description:
@@ -42,6 +44,7 @@ export const ContactSection = () => {
           setIsSubmitting(false);
         },
         (error) => {
+          trackContactForm(false);
           toast({
             title: "Something went wrong!",
             description: "Please try again later.",
@@ -111,13 +114,18 @@ export const ContactSection = () => {
                 <a
                   href="https://www.linkedin.com/in/pasindu-lakshan-823909279/"
                   target="_blank"
+                  onClick={() => trackExternalLink("linkedin", "https://www.linkedin.com/in/pasindu-lakshan-823909279/")}
                 >
                   <Linkedin />
                 </a>
                 <a href="" target="_blank">
                   <Twitter />
                 </a>
-                <a href="https://github.com/PasinduLF" target="_blank">
+                <a 
+                  href="https://github.com/PasinduLF" 
+                  target="_blank"
+                  onClick={() => trackExternalLink("github", "https://github.com/PasinduLF")}
+                >
                   <Github />
                 </a>
               </div>
