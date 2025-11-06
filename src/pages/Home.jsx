@@ -6,12 +6,16 @@ import { Navbar } from "../components/Navbar";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { SkillsSection } from "../components/SkillsSection";
 import { TimelineSection } from "../components/TimelineSection";
+import { ScrollProgress } from "../components/ScrollProgress";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 
 export const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
+
       {/* Thame Toggle */}
       <ThemeToggle />
 
