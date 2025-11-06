@@ -60,6 +60,18 @@
       opacity: 0;
     }
   }
+  @keyframes blink-cursor {
+    0%, 45% {
+      opacity: 1;
+    }
+    50%, 95% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  --animate-blink-cursor: blink-cursor 0.8s ease-in-out infinite;
 }
 
 @layer base {
