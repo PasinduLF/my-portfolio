@@ -1,5 +1,7 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { OptimizedImage } from "./OptimizedImage";
+import { ProjectCardSkeleton } from "./ui/skeleton";
+import { useState, useEffect } from "react";
 
 const projects = [
   {
@@ -35,6 +37,17 @@ const projects = [
 ];
 
 export const ProjectsSection = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading state on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="projects" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
@@ -47,7 +60,13 @@ export const ProjectsSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, key) => (
+          {isLoading ? (
+            // Show skeleton loaders while loading
+            Array.from({ length: 3 }).map((_, index) => (
+              <ProjectCardSkeleton key={index} />
+            ))
+          ) : (
+            projects.map((project, key) => (
             <div
               key={key}
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
@@ -94,7 +113,8 @@ export const ProjectsSection = () => {
                 </div>
               </div>
             </div>
-          ))}
+            ))
+          )}
         </div>
         <div className="text-center my-12">
           <a
