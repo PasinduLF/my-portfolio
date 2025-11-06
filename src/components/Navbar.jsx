@@ -116,8 +116,8 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed w-full z-40 transition-all duration-300 glass-nav",
+        isScrolled ? "py-3" : "py-5"
       )}
       role="navigation"
       aria-label="Main navigation"
@@ -178,7 +178,7 @@ export const Navbar = () => {
           aria-modal="true"
           aria-label="Mobile navigation menu"
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 bg-background/40 backdrop-blur-xl z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"

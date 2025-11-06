@@ -218,7 +218,7 @@ export const BlogSection = () => {
               <article
                 key={post.id}
                 className={cn(
-                  "bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2",
+                  "glass-card p-6 rounded-lg card-hover relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2",
                   post.featured && "md:col-span-2"
                 )}
                 tabIndex={0}

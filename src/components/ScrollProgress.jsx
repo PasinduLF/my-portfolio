@@ -47,11 +47,11 @@ export const ScrollProgress = () => {
       aria-label="Scroll progress"
     >
       {/* Background track */}
-      <div className="absolute inset-0 bg-secondary/20" />
+      <div className="absolute inset-0 bg-secondary/10 backdrop-blur-sm" />
       
       {/* Progress bar */}
       <div
-        className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary via-primary to-primary/80 transition-all duration-150 ease-out shadow-lg"
+        className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary/80 via-primary to-primary/80 backdrop-blur-sm transition-all duration-150 ease-out shadow-lg"
         style={{ width: `${scrollProgress}%` }}
       >
         {/* Shimmer effect */}

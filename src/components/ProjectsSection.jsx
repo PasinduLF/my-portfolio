@@ -146,7 +146,7 @@ export const ProjectsSection = () => {
             filteredProjects.map((project, key) => (
             <article
               key={project.id}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover animate-fade-in focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+              className="group glass-card rounded-lg overflow-hidden card-hover animate-fade-in focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
               style={{ animationDelay: `${key * 0.1}s` }}
               tabIndex={0}
               aria-label={`${project.title} project`}
@@ -237,7 +237,7 @@ export const ProjectsSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackExternalLink("github_profile", "https://github.com/PasinduLF")}
-            className="cosmic-button w-fit flex items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="cosmic-button glass-button w-fit flex items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             aria-label="Visit my GitHub profile"
           >
             Check My GitHub <ArrowRight size={16} aria-hidden="true" />

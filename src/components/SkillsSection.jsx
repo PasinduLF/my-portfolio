@@ -308,9 +308,9 @@ export const SkillsSection = () => {
                   <div
                     data-skill-id={skillId}
                     className={cn(
-                      "bg-card p-6 rounded-lg shadow-xs border border-border/50",
+                      "glass-card p-6 rounded-lg",
                       "transition-all duration-300 group",
-                      "hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] hover:border-primary/30",
+                      "hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] hover:border-primary/40",
                       "hover:-translate-y-1"
                     )}
                     role="article"

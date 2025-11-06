@@ -34,8 +34,9 @@ export const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       className={cn(
-        "fixed max-sm:hidden top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300",
-        "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        "fixed max-sm:hidden top-5 right-5 z-50 p-3 rounded-full transition-all duration-300 glass",
+        "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+        "hover:scale-110 hover:shadow-lg"
       )}
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={isDarkMode}

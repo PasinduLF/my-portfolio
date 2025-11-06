@@ -72,7 +72,7 @@ export const HeroSection = () => {
           >
             <a
               href="#projects"
-              className="cosmic-button focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="cosmic-button glass-button focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               aria-label="Navigate to projects section"
             >
               View My Projects

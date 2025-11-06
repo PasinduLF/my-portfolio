@@ -96,7 +96,7 @@ export const CertificationsSection = () => {
               return (
                 <article
                   key={cert.id}
-                  className="bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+                  className="glass-card p-6 rounded-lg card-hover relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
                   style={{ animationDelay: `${index * 0.1}s` }}
                   tabIndex={0}
                   aria-label={`${cert.name} certification from ${cert.issuer}`}

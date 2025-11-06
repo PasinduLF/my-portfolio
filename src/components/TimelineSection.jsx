@@ -78,7 +78,7 @@ export const TimelineSection = () => {
                       isEven ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
                     )}
                   >
-                    <div className="bg-card p-6 rounded-lg shadow-xs card-hover border border-border relative overflow-hidden">
+                    <div className="glass-card p-6 rounded-lg card-hover relative overflow-hidden">
                       {/* Decorative gradient */}
                       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" />
                       

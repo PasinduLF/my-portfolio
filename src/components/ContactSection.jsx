@@ -147,7 +147,7 @@ export const ContactSection = () => {
           </div>
 
           {/* ✅ EmailJS Form */}
-          <div className="bg-card p-8 rounded-lg shadow-xs">
+          <div className="glass-card p-8 rounded-lg">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
               <div>

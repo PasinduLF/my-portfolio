@@ -20,7 +20,7 @@ export const Skeleton = ({ className, ...props }) => {
  */
 export const ProjectCardSkeleton = () => {
   return (
-    <div className="bg-card rounded-lg overflow-hidden shadow-xs">
+    <div className="glass-card rounded-lg overflow-hidden">
       <Skeleton className="h-48 w-full" />
       <div className="p-6 space-y-4">
         <Skeleton className="h-6 w-3/4" />
@@ -45,7 +45,7 @@ export const ProjectCardSkeleton = () => {
  */
 export const SkillCardSkeleton = () => {
   return (
-    <div className="bg-card p-6 rounded-lg shadow-xs">
+    <div className="glass-card p-6 rounded-lg">
       <Skeleton className="h-6 w-24 mb-4" />
       <Skeleton className="h-2 w-full rounded-full mb-2" />
       <Skeleton className="h-4 w-12 ml-auto" />
