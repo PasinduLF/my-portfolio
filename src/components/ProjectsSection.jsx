@@ -1,4 +1,5 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { OptimizedImage } from "./OptimizedImage";
 
 const projects = [
   {
@@ -52,10 +53,13 @@ export const ProjectsSection = () => {
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
             >
               <div className="h-48 overflow-hidden">
-                <img
+                <OptimizedImage
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - Project Screenshot`}
+                  width={400}
+                  height={192}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  placeholder="bg-gradient-to-br from-primary/10 to-secondary/20"
                 />
               </div>
               <div className="p-6">
