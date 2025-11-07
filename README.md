@@ -351,7 +351,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 - Email: lpasindu30@gmail.com
 - Phone: +94 (71) 993-0179
 - Location: Wattala, Sri Lanka
-- LinkedIn: [Pasindu Lakshan](https://www.linkedin.com/in/pasindu-lakshan-823909279/)
+- LinkedIn: [Pasindu Lakshan](https://www.linkedin.com/in/pasindu-lakshan-fernando)
 - GitHub: [PasinduLF](https://github.com/PasinduLF)
 
 ---
