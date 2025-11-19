@@ -18,13 +18,13 @@ const projects = [
   },
   {
     id: 2,
-    title: "Personal Finance Tracker App",
+    title: "CashBuddy - Personal Finance Tracker App",
     description:
       "CashBuddy is a Kotlin-based Android app that helps users track income, expenses, and budgets. It features category-wise analysis, budget alerts, and data backup for simple, effective financial management.",
     image: "/projects/cashbuddy.png",
     tags: ["HTML", "CSS", "JS"],
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/PasinduLF/CashBuddy",
   },
   {
     id: 3,
@@ -34,8 +34,39 @@ const projects = [
     image: "/projects/staff.jpg",
     tags: ["HTML", "CSS", "JS"],
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/PasinduLF/StaffManagement_java",
   },
+  {
+    id: 4,
+    title: "FeelsFix – Online Therapy Booking",
+    description:
+      "FeelsFix is a MERN-based online therapy booking platform that bridges the gap between mental health professionals and clients, offering streamlined appointment scheduling, payments, and secure client–therapist communication.",
+    image: "/projects/feelsfix.png", // add this image to your public/projects folder
+    tags: ["MERN", "React", "Node.js", "Express.js", "MongoDB"],
+    demoUrl: "#", // put your live demo URL here
+    githubUrl: "https://github.com/PasinduLF/FeelsFIX", // put your GitHub repo URL here
+  },
+  {
+  id: 5,
+  title: "RebuildHub – Disaster Management & Emergency Response App",
+  description:
+    "A React Native + Expo powered disaster management app enabling citizens to report disasters, request emergency aid, and allowing NGOs to coordinate relief operations with real-time data, maps, analytics, and offline support.",
+  image: "/projects/rebuildhub.jpg", // <--- add image to public/projects folder
+  tags: ["React Native", "Expo", "Firebase", "Google Maps", "Cloudinary"],
+  demoUrl: "#", // Add your Expo demo or video link here
+  githubUrl: "https://github.com/PasinduLF/RebuildHub", // Add your GitHub repo link here
+},
+{
+  id: 6,
+  title: "Eco Waste Solutions – Smart Waste Management System",
+  description:
+    "A full-stack waste management system connecting users, collectors, and administrators with features like waste collection scheduling, QR-based verification, GPS location selection, digital wallet rewards, and an analytics-driven admin dashboard.",
+  image: "/projects/ecowaste.png", // Add image to public/projects folder
+  tags: ["React", "Spring Boot", "MongoDB", "Google Maps", "QR Code"],
+  demoUrl: "#", // Add demo or deployed link
+  githubUrl: "https://github.com/PasinduLF/EcoWaste-Solutions", // Add GitHub repo link
+},
+
 ];
 
 export const ProjectsSection = () => {
