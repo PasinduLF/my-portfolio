@@ -6,39 +6,78 @@ import { trackExternalLink } from "@/lib/analytics";
 const certifications = [
   {
     id: 1,
-    name: "React - The Complete Guide",
-    issuer: "Udemy",
-    date: "2024-01-20",
-    credentialId: "UC-abc123xyz",
+    name: "Trainee – Full Stack Developer Program",
+    issuer: "Open Learning Platform, University of Moratuwa",
+    date: "2024-01-01",
+    credentialId: "",
     credentialUrl: "#",
-    description: "Comprehensive React course covering hooks, context, routing, and advanced patterns.",
-    category: "Web Development",
+    description:
+      "Ongoing full stack developer training covering modern web technologies, frontend and backend development, and industry best practices.",
+    category: "Full Stack Development",
     icon: Award,
   },
   {
     id: 2,
-    name: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "2023-12-15",
-    credentialId: "fcc-js-algorithms",
+    name: "Certificate in Computer Application",
+    issuer: "National Youth Services Council, Sapugaskanda",
+    date: "2022-01-01",
+    credentialId: "",
     credentialUrl: "#",
-    description: "Mastered JavaScript fundamentals, algorithms, and data structures through hands-on projects.",
-    category: "Programming",
+    description:
+      "Completed foundational computer application training including office tools and digital literacy.",
+    category: "IT Fundamentals",
     icon: Award,
   },
   {
     id: 3,
-    name: "Responsive Web Design",
-    issuer: "freeCodeCamp",
-    date: "2023-11-10",
-    credentialId: "fcc-responsive-web",
+    name: "Certificate in Spoken English",
+    issuer: "Bright Vision English Academy, Kiribathgoda",
+    date: "2021-01-01",
+    credentialId: "",
     credentialUrl: "#",
-    description: "Learned HTML5, CSS3, and responsive design principles to build modern web applications.",
-    category: "Web Development",
+    description:
+      "Enhanced spoken English proficiency with a focus on communication and presentation skills.",
+    category: "Communication",
     icon: Award,
   },
-  // Add more certifications as needed
+  {
+    id: 4,
+    name: "MongoDB Java Developer Path",
+    issuer: "MongoDB University",
+    date: "2025-10-26",
+    credentialId: "MDBkok5jltk4q", 
+    credentialUrl: "/mnt/data/MongoDB Java Developer Path-certificate_page-0001 (1).jpg", 
+    description:
+      "Completed the MongoDB Java Developer Path covering Java integration, CRUD operations, schema design, indexing, and performance optimization.",
+    category: "Database",
+    icon: Award,
+  },
+  {
+    id: 5,
+    name: "Volunteer – University CodeFest",
+    issuer: "SLIIT",
+    date: "2024-06-01",
+    credentialId: "",
+    credentialUrl: "#",
+    description:
+      "Volunteered in organizing coding competitions and technical workshops during CodeFest.",
+    category: "Achievement",
+    icon: Award,
+  },
+  {
+    id: 6,
+    name: "IEEE Student Member",
+    issuer: "IEEE",
+    date: "2023-01-01",
+    credentialId: "Member ID: 101560868",
+    credentialUrl: "#",
+    description:
+      "Active IEEE student member participating in tech communities and professional events.",
+    category: "Professional Membership",
+    icon: Award,
+  },
 ];
+
 
 export const CertificationsSection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,6 +94,7 @@ export const CertificationsSection = () => {
   // Format date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
+    if (Number.isNaN(date.getTime())) return dateString;
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -70,7 +110,9 @@ export const CertificationsSection = () => {
             Certifications & <span className="text-primary">Achievements</span>
           </h2>
           <p className="text-center text-muted-foreground max-w-2xl mx-auto">
-            Professional certifications and achievements that demonstrate my commitment to continuous learning and skill development.
+            Professional certifications, memberships, and achievements that
+            reflect my commitment to continuous learning, leadership, and
+            personal growth.
           </p>
         </div>
 
@@ -90,7 +132,10 @@ export const CertificationsSection = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            aria-live="polite"
+          >
             {certifications.map((cert, index) => {
               const Icon = cert.icon;
               return (
@@ -99,23 +144,32 @@ export const CertificationsSection = () => {
                   className="glass-card p-6 rounded-lg card-hover relative overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
                   style={{ animationDelay: `${index * 0.1}s` }}
                   tabIndex={0}
-                  aria-label={`${cert.name} certification from ${cert.issuer}`}
+                  aria-label={`${cert.name} from ${cert.issuer}`}
                 >
                   {/* Decorative gradient */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0" aria-hidden="true" />
+                  <div
+                    className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-0"
+                    aria-hidden="true"
+                  />
 
                   <div className="relative z-10">
                     {/* Icon and Category */}
                     <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors" aria-hidden="true">
+                      <div
+                        className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors"
+                        aria-hidden="true"
+                      >
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
-                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground" aria-label={`Category: ${cert.category}`}>
+                      <span
+                        className="px-2 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground"
+                        aria-label={`Category: ${cert.category}`}
+                      >
                         {cert.category}
                       </span>
                     </div>
 
-                    {/* Certification Name */}
+                    {/* Certification / Achievement Name */}
                     <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                       {cert.name}
                     </h3>
@@ -132,20 +186,31 @@ export const CertificationsSection = () => {
 
                     {/* Meta Information */}
                     <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground" aria-label={`Issued on ${formatDate(cert.date)}`}>
-                        <Calendar className="w-3 h-3" aria-hidden="true" />
-                        <span>Issued: {formatDate(cert.date)}</span>
-                      </div>
+                      {cert.date && (
+                        <div
+                          className="flex items-center gap-2 text-xs text-muted-foreground"
+                          aria-label={`Issued on ${formatDate(cert.date)}`}
+                        >
+                          <Calendar className="w-3 h-3" aria-hidden="true" />
+                          <span>Issued: {formatDate(cert.date)}</span>
+                        </div>
+                      )}
                       {cert.credentialId && (
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground" aria-label={`Credential ID: ${cert.credentialId}`}>
-                          <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
-                          <span>ID: {cert.credentialId}</span>
+                        <div
+                          className="flex items-center gap-2 text-xs text-muted-foreground"
+                          aria-label={`Credential ID: ${cert.credentialId}`}
+                        >
+                          <CheckCircle2
+                            className="w-3 h-3"
+                            aria-hidden="true"
+                          />
+                          <span>{cert.credentialId}</span>
                         </div>
                       )}
                     </div>
 
                     {/* Verify Link */}
-                    {cert.credentialUrl && (
+                    {cert.credentialUrl && cert.credentialUrl !== "#" && (
                       <a
                         href={cert.credentialUrl}
                         target="_blank"
@@ -187,4 +252,3 @@ export const CertificationsSection = () => {
     </section>
   );
 };
-
