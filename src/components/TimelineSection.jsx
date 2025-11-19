@@ -5,27 +5,49 @@ const education = [
   {
     id: 1,
     type: "education",
-    title: "Software Engineering",
-    institution: "University",
-    location: "Sri Lanka",
-    period: "2021 - Present",
+    title: "BSc (Hons) in Software Engineering",
+    institution: "SLIIT",
+    location: "Colombo, Sri Lanka",
+    period: "2023 - Present",
     description: "Pursuing a degree in Software Engineering with a focus on web and mobile development. Learning modern technologies and best practices in software development.",
+    icon: GraduationCap,
+  },
+  {
+    id: 2,
+    type: "education",
+    title: "G.C.E. Advanced Level Examination",
+    institution: "Sri Sumangala National College, Kiribathgoda",
+    location: "Kiribathgoda, Sri Lanka",
+    period: "2021",
+    description:
+      "Completed the G.C.E A/L examination with results: 1A and 2B passes.",
+    icon: GraduationCap,
+  },
+  {
+    id: 3,
+    type: "education",
+    title: "G.C.E. Ordinary Level Examination",
+    institution: "Bandaranayaka College, Hunupitiya",
+    location: "Hunupitiya, Sri Lanka",
+    period: "2018",
+    description:
+      "Successfully passed the G.C.E O/L examination with results: 2A’s, 2B’s, and 4C’s.",
     icon: GraduationCap,
   },
   // Add more education entries as needed
 ];
 
 const experience = [
-  {
-    id: 1,
-    type: "experience",
-    title: "Freelance Web Developer",
-    company: "Self-Employed",
-    location: "Wattala, Sri Lanka",
-    period: "2023 - Present",
-    description: "Building responsive web applications for clients using React, Node.js, and modern web technologies. Specializing in creating user-friendly interfaces and efficient backend solutions.",
-    icon: Briefcase,
-  },
+  // {
+  //   id: 1,
+  //   type: "experience",
+  //   title: "Freelance Web Developer",
+  //   company: "Self-Employed",
+  //   location: "Wattala, Sri Lanka",
+  //   period: "2023 - Present",
+  //   description: "Building responsive web applications for clients using React, Node.js, and modern web technologies. Specializing in creating user-friendly interfaces and efficient backend solutions.",
+  //   icon: Briefcase,
+  // },
   // Add more experience entries as needed
 ];
 
