@@ -18,30 +18,6 @@ const certifications = [
   },
   {
     id: 2,
-    name: "Certificate in Computer Application",
-    issuer: "National Youth Services Council, Sapugaskanda",
-    date: "2022-01-01",
-    credentialId: "",
-    credentialUrl: "#",
-    description:
-      "Completed foundational computer application training including office tools and digital literacy.",
-    category: "IT Fundamentals",
-    icon: Award,
-  },
-  {
-    id: 3,
-    name: "Certificate in Spoken English",
-    issuer: "Bright Vision English Academy, Kiribathgoda",
-    date: "2021-01-01",
-    credentialId: "",
-    credentialUrl: "#",
-    description:
-      "Enhanced spoken English proficiency with a focus on communication and presentation skills.",
-    category: "Communication",
-    icon: Award,
-  },
-  {
-    id: 4,
     name: "MongoDB Java Developer Path",
     issuer: "MongoDB University",
     date: "2025-10-26",
@@ -53,7 +29,44 @@ const certifications = [
     icon: Award,
   },
   {
+    id: 3,
+    name: "Project Management 101",
+    issuer: "Simplilearn",
+    date: "2025-12-05",
+    credentialId: "9533852",
+    credentialUrl: "https://simpli-web.app.link/e/LGzX8uEzQYb",
+    description:
+      "Learned core project management fundamentals including project lifecycle, planning, risk management, Agile concepts, and effective team collaboration.",
+    category: "Project Management",
+    icon: Award,
+  },
+  {
+    id: 4,
+    name: "Certificate in Computer Application",
+    issuer: "National Youth Services Council, Sapugaskanda",
+    date: "2022-01-01",
+    credentialId: "",
+    credentialUrl: "#",
+    description:
+      "Completed foundational computer application training including office tools and digital literacy.",
+    category: "IT Fundamentals",
+    icon: Award,
+  },
+  {
     id: 5,
+    name: "Certificate in Spoken English",
+    issuer: "Bright Vision English Academy, Kiribathgoda",
+    date: "2021-01-01",
+    credentialId: "",
+    credentialUrl: "#",
+    description:
+      "Enhanced spoken English proficiency with a focus on communication and presentation skills.",
+    category: "Communication",
+    icon: Award,
+  },
+  
+  {
+    id: 6,
     name: "Volunteer – University CodeFest",
     issuer: "SLIIT",
     date: "2024-06-01",
@@ -65,7 +78,7 @@ const certifications = [
     icon: Award,
   },
   {
-    id: 6,
+    id: 7,
     name: "IEEE Student Member",
     issuer: "IEEE",
     date: "2023-01-01",
