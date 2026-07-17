@@ -1,4 +1,13 @@
-import { Factory, ListChecks, ShoppingCart, Users } from "lucide-react";
+import {
+  Factory,
+  GraduationCap,
+  ListChecks,
+  Receipt,
+  ShoppingCart,
+  Stethoscope,
+  Store,
+  Users,
+} from "lucide-react";
 import type { Project } from "@/types";
 
 export const projects: Project[] = [
@@ -233,8 +242,8 @@ export const projects: Project[] = [
       "An enterprise resource planning system built for Panda Plastic Pvt Ltd during a software engineering internship, streamlining inventory, production, and order management workflows.",
     tags: ["React", "Node.js", "Express", "PostgreSQL", "Prisma", "Tailwind CSS"],
     image: {
-      src: "/projects/panda-plastic-erp.png",
-      real: false,
+      src: "/projects/erp.png",
+      real: true,
       placeholderIcon: Factory,
       placeholderCaption: "Live client deployment — screenshot pending",
     },
@@ -289,6 +298,161 @@ export const projects: Project[] = [
       ],
       results:
         "Delivered as a working internal tool during a 6-month software engineering internship at Sensus Hub Services.",
+    },
+  },
+  {
+    id: 11,
+    slug: "beauty-pc-ecommerce-pos",
+    title: "Beauty P&C — E-Commerce & POS System",
+    description:
+      "A full-stack e-commerce, admin, POS, inventory, and financial-management system for Beauty P&C, a cosmetics retailer — letting the business run both its online store and physical shop from a single system.",
+    tags: ["MERN", "React", "Node.js", "Express.js", "MongoDB"],
+    image: {
+      src: "/projects/bpc.png",
+      real: true,
+      placeholderIcon: Store,
+      placeholderCaption: "Live client deployment — screenshot pending",
+    },
+    demoUrl: "https://beautypc.vercel.app/",
+    githubUrl: "https://github.com/PasinduLF/BPC_E-Commerce",
+    featured: true,
+    hasCaseStudy: true,
+    caseStudy: {
+      problem:
+        "Beauty P&C, a cosmetics retailer, needed to run both an online store and a physical shop without the online catalog, stock counts, and financial records drifting out of sync with what's happening at the till in-store.",
+      solution:
+        "A unified full-stack platform covering the customer-facing e-commerce store, an admin dashboard, a point-of-sale system for in-shop transactions, inventory management, and financial/reporting tools — all backed by the same data so stock and sales stay consistent across both channels.",
+      architecture:
+        "MERN stack: a React frontend for the storefront and admin/POS interfaces, a Node.js/Express REST API, and MongoDB as the shared data store across the online store, POS, inventory, and financial modules.",
+      features: [
+        "Customer-facing e-commerce storefront",
+        "Admin dashboard",
+        "Point-of-sale (POS) system for in-store transactions",
+        "Inventory management shared across online and physical stock",
+        "Financial and sales reporting",
+        "Unified data layer across the online store and physical shop",
+      ],
+      results:
+        "Deployed and live for Beauty P&C, a real cosmetics retailer, at beautypc.vercel.app.",
+    },
+  },
+  {
+    id: 12,
+    slug: "smart-healthcare-telemedicine",
+    title: "Smart Healthcare — AI-Enabled Telemedicine Platform",
+    description:
+      "A cloud-native telemedicine platform built as a university microservices module project (team of 3–4): patients book appointments, attend live video consultations, upload medical reports, and get AI-assisted preliminary health suggestions.",
+    tags: [
+      "Microservices",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Docker",
+      "Kubernetes",
+      "Agora",
+      "Stripe",
+    ],
+    image: {
+      src: "/projects/smart-healthcare.png",
+      real: true,
+      placeholderIcon: Stethoscope,
+      placeholderCaption: "Live deployment — screenshot pending",
+    },
+    demoUrl: "https://smart-healthcare-ochre.vercel.app/",
+    githubUrl: "https://github.com/PasinduLF/Smart-Healthcare",
+    featured: true,
+    hasCaseStudy: true,
+    caseStudy: {
+      problem:
+        "A university microservices module required building a cloud-native telemedicine platform in the style of real-world services like Channeling.lk or oDoc — patients booking doctor appointments, attending video consultations, uploading medical reports, and getting preliminary AI health guidance — architected as independent services rather than a single monolith.",
+      solution:
+        "A microservices-based telemedicine platform built as a 3–4 person team project: separate patient, doctor, appointment, telemedicine, payment, notification, and AI symptom-checker services behind an API gateway, with a React frontend for browsing doctors, booking appointments, and joining video consultations.",
+      architecture:
+        "An Express-based API gateway (JWT auth and request routing via http-proxy-middleware) in front of independent Node.js/Express microservices: patient, doctor, and appointment services on MongoDB; a telemedicine service pairing Agora with Socket.io for real-time video signaling; a payment service integrating Stripe; a notification service sending email confirmations via Nodemailer; and an AI service calling Google Gemini and Groq for preliminary symptom suggestions. Each service is containerized with Docker, with Kubernetes manifests for orchestration, behind a React frontend.",
+      features: [
+        "Patient registration, profiles, and medical report uploads (Cloudinary)",
+        "Doctor availability management and digital prescriptions",
+        "Appointment search, booking, and real-time status tracking",
+        "Live video consultations via Agora with Socket.io signaling",
+        "Stripe-integrated consultation payments",
+        "Email booking and consultation confirmations",
+        "AI-powered preliminary symptom checker (Gemini + Groq)",
+        "Role-based access for patients, doctors, and admins (JWT)",
+      ],
+      results:
+        "Built as a 3–4 person team project for a university microservices module and deployed with a working live demo.",
+    },
+  },
+  {
+    id: 13,
+    slug: "examcoach",
+    title: "ExamCoach — AI-Powered Exam Preparation Platform",
+    description:
+      "A MERN exam-preparation platform built as a 4-person team project for a university Application Frameworks module — students summarize material, generate and take AI quizzes, get AI-generated study plans, and sit invigilated practice exams with real-time cheating detection.",
+    tags: ["MERN", "React", "Node.js", "Express", "MongoDB", "Socket.io", "Gemini", "Groq"],
+    image: {
+      src: "/projects/examcoach.png",
+      real: false,
+      placeholderIcon: GraduationCap,
+      placeholderCaption: "Team project — screenshot pending",
+    },
+    demoUrl: "https://exam-coach-sigma.vercel.app",
+    githubUrl: "https://github.com/DasunShanaka01/ExamCoach",
+    featured: false,
+    hasCaseStudy: true,
+    caseStudy: {
+      problem:
+        "A university full-stack module (Application Frameworks) required a platform combining secure REST APIs, React frontend integration, role-based security, external API usage, and deployment — built as a 4-person team.",
+      solution:
+        "ExamCoach: students summarize learning material, generate and take AI-powered quizzes, follow AI-generated study plans, and sit invigilated practice exams with real-time cheating detection; teachers and admins manage content and platform activity. Built as a team of 4 — my contribution focused on the AI quiz generation and user management modules.",
+      architecture:
+        "React (Vite) frontend with a Socket.io client for real-time features; an Express/MongoDB backend with JWT auth, Cloudinary + multer for uploads, and Socket.io for real-time tab-switch cheating alerts. AI features call Google Gemini and Groq, with Tesseract.js OCR and PDF parsing to pull content from uploaded study documents.",
+      features: [
+        "AI-powered quiz generation from uploaded documents/text (Gemini + Groq + OCR)",
+        "AI Learning Lab: material summarization and related resources",
+        "AI-generated personalized study plans",
+        "Real-time cheating detection via tab-switch alerts (Socket.io)",
+        "Role-based access for students, teachers, and admins",
+        "Course, stream, and lesson management",
+      ],
+      results:
+        "Built as a 4-person team for a university Application Frameworks module; my contribution centered on the AI quiz generation and user management modules. Deployed live (frontend on Vercel, backend on Render).",
+    },
+  },
+  {
+    id: 14,
+    slug: "beauty-pc-desktop-pos",
+    title: "Beauty P&C — Offline Desktop POS",
+    description:
+      "An offline-first desktop point-of-sale application for Beauty P&C's physical shop — the till-side companion to its online store — built with Python and PyQt5, running entirely without an internet connection, with barcode scanning, receipt printing, and full financial management.",
+    tags: ["Python", "PyQt5", "SQLite", "Desktop"],
+    image: {
+      src: "/projects/beauty-pc-pos.png",
+      real: false,
+      placeholderIcon: Receipt,
+      placeholderCaption: "Desktop app — screenshot pending",
+    },
+    demoUrl: undefined,
+    githubUrl: "https://github.com/PasinduLF/POS-system",
+    featured: false,
+    hasCaseStudy: true,
+    caseStudy: {
+      problem:
+        "Beauty P&C's physical shop needed fast, reliable point-of-sale checkout and full financial record-keeping that didn't depend on an internet connection — a till-side system that keeps working through outages rather than relying on a server round-trip for every sale.",
+      solution:
+        "An offline-first desktop POS application for Windows: barcode-scanning checkout, product and variant management, stock tracking with low-stock alerts, and a full financial suite (cashbook, bankbook, expense tracking, and profit reporting) — all running locally against a SQLite database.",
+      architecture:
+        "A PyQt5 desktop application backed by a local SQLite database, packaged as a standalone Windows executable with PyInstaller. Receipt printing goes through python-escpos for thermal printer support, with pandas, openpyxl, and XlsxWriter used to generate Excel reports and ReportLab for PDFs.",
+      features: [
+        "Barcode-scanning POS checkout with cart, discounts, and multiple payment methods",
+        "Product and variant management (size, color, SKU, barcodes, pricing)",
+        "Stock tracking with low-stock alerts",
+        "Sales, purchase, and supplier management with reporting",
+        "Cashbook and bankbook for full cash/bank transaction tracking",
+        "Daily/monthly/yearly profit and financial reports",
+        "Role-based login for Admin and Cashier",
+      ],
     },
   },
 ];

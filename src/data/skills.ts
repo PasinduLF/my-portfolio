@@ -1,7 +1,10 @@
 import {
+  Blocks,
   Boxes,
+  BrainCircuit,
   Code2,
   Coffee,
+  Container,
   Database,
   FileCode,
   FileJson,
@@ -126,6 +129,16 @@ export const skills: Skill[] = [
     color: "text-green-500",
   },
   {
+    name: "AI/LLM APIs",
+    level: 72,
+    category: "backend",
+    icon: BrainCircuit,
+    description:
+      "Integrating generative AI APIs (Google Gemini, Groq) into backend services for AI-assisted features.",
+    tags: ["Gemini", "Groq", "REST Integration"],
+    color: "text-fuchsia-400",
+  },
+  {
     name: "Java",
     level: 90,
     category: "backend",
@@ -188,6 +201,25 @@ export const skills: Skill[] = [
     description: "Native Android app development with Kotlin.",
     tags: ["Android", "Kotlin"],
     color: "text-green-500",
+  },
+  {
+    name: "Docker",
+    level: 75,
+    category: "tools",
+    icon: Container,
+    description:
+      "Containerizing microservices, used across a multi-service telemedicine platform.",
+    tags: ["Containers", "docker-compose"],
+    color: "text-sky-500",
+  },
+  {
+    name: "Kubernetes",
+    level: 65,
+    category: "tools",
+    icon: Blocks,
+    description: "Container orchestration manifests for a microservices deployment.",
+    tags: ["Orchestration", "Microservices"],
+    color: "text-blue-600",
   },
 ];
 
