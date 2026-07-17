@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5174/)",
+      "Bash(which chromium-cli *)",
+      "Read(//c//**)",
+      "Bash(command -v chromium-cli)",
+      "Bash(npm run *)",
+      "Bash(powershell -Command 'Get-CimInstance Win32_Process -Filter \"Name='\\\\''node.exe'\\\\''\" | Where-Object { $_.CommandLine -like '\\\\''*vite*'\\\\'' } | Select-Object ProcessId,CommandLine')",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 5174 -State Listen | Select-Object OwningProcess\")",
+      "Bash(powershell -Command \"Stop-Process -Id 18324 -Force\")"
+    ]
+  }
+}
