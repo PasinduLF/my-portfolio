@@ -1,4 +1,4 @@
-import { Factory, ListChecks, ShoppingCart, Users } from "lucide-react";
+import { Factory, ListChecks, ShoppingCart, Store, Users } from "lucide-react";
 import type { Project } from "@/types";
 
 export const projects: Project[] = [
@@ -233,8 +233,8 @@ export const projects: Project[] = [
       "An enterprise resource planning system built for Panda Plastic Pvt Ltd during a software engineering internship, streamlining inventory, production, and order management workflows.",
     tags: ["React", "Node.js", "Express", "PostgreSQL", "Prisma", "Tailwind CSS"],
     image: {
-      src: "/projects/panda-plastic-erp.png",
-      real: false,
+      src: "/projects/erp.png",
+      real: true,
       placeholderIcon: Factory,
       placeholderCaption: "Live client deployment — screenshot pending",
     },
@@ -289,6 +289,42 @@ export const projects: Project[] = [
       ],
       results:
         "Delivered as a working internal tool during a 6-month software engineering internship at Sensus Hub Services.",
+    },
+  },
+  {
+    id: 11,
+    slug: "beauty-pc-ecommerce-pos",
+    title: "Beauty P&C — E-Commerce & POS System",
+    description:
+      "A full-stack e-commerce, admin, POS, inventory, and financial-management system for Beauty P&C, a cosmetics retailer — letting the business run both its online store and physical shop from a single system.",
+    tags: ["MERN", "React", "Node.js", "Express.js", "MongoDB"],
+    image: {
+      src: "/projects/bpc.png",
+      real: true,
+      placeholderIcon: Store,
+      placeholderCaption: "Live client deployment — screenshot pending",
+    },
+    demoUrl: "https://beautypc.vercel.app/",
+    githubUrl: "https://github.com/PasinduLF/BPC_E-Commerce",
+    featured: true,
+    hasCaseStudy: true,
+    caseStudy: {
+      problem:
+        "Beauty P&C, a cosmetics retailer, needed to run both an online store and a physical shop without the online catalog, stock counts, and financial records drifting out of sync with what's happening at the till in-store.",
+      solution:
+        "A unified full-stack platform covering the customer-facing e-commerce store, an admin dashboard, a point-of-sale system for in-shop transactions, inventory management, and financial/reporting tools — all backed by the same data so stock and sales stay consistent across both channels.",
+      architecture:
+        "MERN stack: a React frontend for the storefront and admin/POS interfaces, a Node.js/Express REST API, and MongoDB as the shared data store across the online store, POS, inventory, and financial modules.",
+      features: [
+        "Customer-facing e-commerce storefront",
+        "Admin dashboard",
+        "Point-of-sale (POS) system for in-store transactions",
+        "Inventory management shared across online and physical stock",
+        "Financial and sales reporting",
+        "Unified data layer across the online store and physical shop",
+      ],
+      results:
+        "Deployed and live for Beauty P&C, a real cosmetics retailer, at beautypc.vercel.app.",
     },
   },
 ];
