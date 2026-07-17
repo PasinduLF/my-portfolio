@@ -14,6 +14,6 @@ export const siteConfig = {
   social: {
     github: "https://github.com/PasinduLF",
     githubUsername: "PasinduLF",
-    linkedin: "https://www.linkedin.com/in/pasindu-lakshan-823909279/",
+    linkedin: "https://www.linkedin.com/in/pasindu-lakshan-fernando/",
   },
 } as const;
