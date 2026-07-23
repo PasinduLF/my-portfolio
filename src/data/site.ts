@@ -11,6 +11,7 @@ export const siteConfig = {
   location: "Wattala, Sri Lanka",
   resumeUrl: "/Pasindu-CV.pdf",
   availability: "Open to new opportunities",
+  whatsapp: "https://wa.me/94719930179",
   social: {
     github: "https://github.com/PasinduLF",
     githubUsername: "PasinduLF",

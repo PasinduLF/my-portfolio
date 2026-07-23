@@ -17,9 +17,21 @@ export const timeline: TimelineItem[] = [
   {
     id: 2,
     type: "experience",
+    title: "Associate Software Engineer (Independent Contractor)",
+    organization: "Sensus Hub Services (Pvt) Ltd.",
+    location: "Colombo, Sri Lanka (Hybrid)",
+    period: "Jul 2026 — Present",
+    sortDate: "9999-12-30",
+    description:
+      "Continuing on as an independent contractor after completing my internship, working on full-stack business applications for Sensus Hub Services' clients.",
+    icon: Briefcase,
+  },
+  {
+    id: 5,
+    type: "experience",
     title: "Software Engineering Intern",
-    organization: "Sensus Hub Services Private Limited",
-    location: "Boralesgamuwa, Sri Lanka",
+    organization: "Sensus Hub Services (Pvt) Ltd.",
+    location: "Colombo, Sri Lanka (Hybrid)",
     period: "Jan 2026 — Jun 2026",
     sortDate: "2026-06-30",
     description:

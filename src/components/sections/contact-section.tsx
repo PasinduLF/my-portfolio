@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 
 import { SectionHeading } from "@/components/shared/section-heading";
-import { GithubIcon, LinkedinIcon } from "@/components/shared/icons";
+import { GithubIcon, LinkedinIcon, WhatsAppIcon } from "@/components/shared/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -84,6 +84,13 @@ export function ContactSection() {
             {[
               { icon: Mail, label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
               { icon: Phone, label: "Phone", value: siteConfig.phoneDisplay, href: `tel:${siteConfig.phone}` },
+              {
+                icon: WhatsAppIcon,
+                label: "WhatsApp",
+                value: siteConfig.phoneDisplay,
+                href: siteConfig.whatsapp,
+                external: true,
+              },
               { icon: MapPin, label: "Location", value: siteConfig.location },
             ].map((item) => (
               <div key={item.label} className="flex items-start gap-4">
@@ -93,7 +100,12 @@ export function ContactSection() {
                 <div>
                   <p className="text-sm font-medium">{item.label}</p>
                   {item.href ? (
-                    <a href={item.href} className="text-muted-foreground transition-colors hover:text-primary">
+                    <a
+                      href={item.href}
+                      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      onClick={item.external ? () => trackExternalLink("whatsapp", item.href) : undefined}
+                      className="text-muted-foreground transition-colors hover:text-primary"
+                    >
                       {item.value}
                     </a>
                   ) : (
