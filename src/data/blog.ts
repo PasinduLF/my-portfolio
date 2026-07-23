@@ -85,6 +85,62 @@ export const blogPosts: BlogPost[] = [
     tags: ["OOP", "MVC", "Java"],
     featured: false,
   },
+  {
+    id: 7,
+    slug: "llm-apis-in-full-stack-apps",
+    title: "Integrating LLM APIs into Full-Stack Apps",
+    excerpt:
+      "Practical lessons from wiring Gemini and Groq into production backends — prompt design, streaming responses, and handling failures gracefully.",
+    content:
+      "Adding an LLM API to a backend looks simple until it hits production: prompts need versioning like any other config, streaming responses change how your frontend has to render state, and every call needs a timeout and a fallback because model providers do have bad days. Groq's speed makes it a good fit for latency-sensitive features, while Gemini's larger context window suits tasks that need more source material in the prompt. The real engineering work isn't the API call — it's the retry logic, output validation, and cost controls around it.",
+    date: "2026-05-12",
+    readTime: "7 min read",
+    category: "AI & Machine Learning",
+    tags: ["AI/LLM APIs", "Gemini", "Groq", "Node.js"],
+    featured: true,
+  },
+  {
+    id: 8,
+    slug: "rebuilding-portfolio-nextjs-app-router",
+    title: "Why I Rebuilt My Portfolio with the Next.js App Router",
+    excerpt:
+      "Moving from a Vite single-page app to Next.js App Router for better SEO, image handling, and server components — what changed and what I'd do differently.",
+    content:
+      "My old portfolio was a Vite SPA — fast to develop, but every page was client-rendered, which meant weaker SEO and a blank screen until the JS bundle loaded. Rewriting it in Next.js with the App Router meant restructuring components around server vs. client boundaries for the first time: static content like the hero and about sections became server components with zero client JS, while interactive pieces like the contact form and project filters stayed client components. The payoff was real — static generation for every route, built-in image optimization, and per-page metadata for actual SEO — but it meant relearning where state should live in a codebase I thought I already knew well.",
+    date: "2026-07-05",
+    readTime: "6 min read",
+    category: "Web Development",
+    tags: ["Next.js", "App Router", "React", "TypeScript"],
+    featured: true,
+  },
+  {
+    id: 9,
+    slug: "docker-kubernetes-for-fullstack-devs",
+    title: "Docker and Kubernetes for Full-Stack Developers",
+    excerpt:
+      "A practical primer on containerizing a multi-service app and deploying it with Kubernetes, from someone who learned it on a real microservices platform.",
+    content:
+      "Containerizing a multi-service app is mostly a discipline problem, not a tooling one: each service gets its own Dockerfile and its own responsibility, and docker-compose ties them together for local development so the whole stack comes up with one command. Kubernetes only earns its complexity once you actually need what it offers — rolling deploys, self-healing pods, and horizontal scaling per service. Starting with plain manifests before reaching for Helm charts made the underlying concepts (Deployments, Services, ConfigMaps) much easier to reason about than jumping straight to abstractions on top of them.",
+    date: "2026-03-18",
+    readTime: "8 min read",
+    category: "DevOps",
+    tags: ["Docker", "Kubernetes", "Microservices"],
+    featured: false,
+  },
+  {
+    id: 10,
+    slug: "ai-coding-agents-changing-how-i-build",
+    title: "How AI Coding Agents Are Changing the Way I Build Software",
+    excerpt:
+      "Reflections on working alongside agentic AI tools day to day — where they genuinely speed things up, and where a developer's judgment still matters most.",
+    content:
+      "Agentic coding tools have changed the shape of my day-to-day work more than any single framework has: they're genuinely fast at scaffolding, writing tests, and tracing bugs across a codebase I already understand. What hasn't changed is the part that actually takes engineering judgment — deciding what to build, spotting when a suggested approach is subtly wrong for the codebase's constraints, and reviewing generated code as carefully as I'd review a teammate's pull request. Treating an AI agent as a fast, occasionally overconfident collaborator rather than an oracle is what's made it a net positive rather than a source of silent technical debt.",
+    date: "2026-06-20",
+    readTime: "6 min read",
+    category: "Software Engineering",
+    tags: ["AI", "Developer Tools", "Productivity"],
+    featured: false,
+  },
 ];
 
 export const blogCategories = [

@@ -3,7 +3,7 @@ import { ArrowUp, Mail } from "lucide-react";
 
 import { siteConfig } from "@/data/site";
 import { navItems } from "@/data/nav";
-import { GithubIcon, LinkedinIcon } from "@/components/shared/icons";
+import { GithubIcon, LinkedinIcon, WhatsAppIcon } from "@/components/shared/icons";
 
 export function Footer() {
   return (
@@ -40,6 +40,15 @@ export function Footer() {
             >
               <Mail className="size-4" />
             </a>
+            <a
+              href={siteConfig.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+            >
+              <WhatsAppIcon className="size-4" />
+            </a>
           </div>
         </div>
 
@@ -67,6 +76,16 @@ export function Footer() {
             <li>
               <a href={`tel:${siteConfig.phone}`} className="transition-colors hover:text-primary">
                 {siteConfig.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteConfig.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-primary"
+              >
+                WhatsApp
               </a>
             </li>
             <li>{siteConfig.location}</li>
